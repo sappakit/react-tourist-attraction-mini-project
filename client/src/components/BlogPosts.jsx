@@ -58,7 +58,12 @@ function BlogPosts({ blogList, setInputChange }) {
                     <a
                       className="underline"
                       href="#"
-                      onClick={() => setInputChange(tag)}
+                      onClick={(e) =>
+                        setInputChange((prevTag) => {
+                          e.preventDefault();
+                          return `${prevTag} ${tag}`.trim();
+                        })
+                      }
                     >
                       {tag}
                     </a>
